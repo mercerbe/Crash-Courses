@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>JS Star Rating System</title>
+  <style media="screen">
+    body {
+      background: #0F2027;  /* fallback for old browsers */  /* Chrome 10-25, Safari 5.1-6 */
+      background: -webkit-linear-gradient(left, #2C5364, #203A43, #0F2027);
+      background: -o-linear-gradient(left, #2C5364, #203A43, #0F2027);
+      background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    .stars-outer {
+      position: relative;
+      display: inline-block;
+    }
+    .stars-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+    }
+    .stars-outer::before {
+      content: "\f005\f005\f005\f005\f005";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 800;
+      color: #ccc;
+    }
+    .stars-inner::before {
+      content: "\f005\f005\f005\f005\f005";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 800;
+      color: #f8ce0b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Star Ratings</h1>
+    <p class="lead">Star Rating component built with HTML | CSS | JS</p>
+  </div>
+</div>
+    <div class="form-group">
+      <select id="product-select" class="form-control custom-select">
+        <option disabled selected value="0">Select A Framework</option>
+        <option  value="react">React</option>
+        <option  value="vue">Vue</option>
+        <option  value="angular">Angular</option>
+        <option  value="backbone">Backbone</option>
+        <option  value="inferno">Inferno</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="number" id="rating-control" class="form-control" step="0.1" max="5" placeholder="rate 1-5" disabled>
+    </div>
+    <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th>Framework Ratings</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- TV rows -->
+          <tr class="react">
+            <td>React</td>
+            <td>
+              <div class="stars-outer">
+                <div class="stars-inner">
+                </div>
+              </div>
+              <span class="number-rating"></span>
+            </td>
+          </tr>
+          <tr class="vue">
+            <td>Vue</td>
+            <td>
+              <div class="stars-outer">
+                <div class="stars-inner">
+                </div>
+              </div>
+              <span class="number-rating"></span>
+            </td>
+          </tr>
+          <tr class="angular">
+            <td>Angular</td>
+            <td>
+              <div class="stars-outer">
+                <div class="stars-inner">
+                </div>
+              </div>
+              <span class="number-rating"></span>
+            </td>
+          </tr>
+          <tr class="backbone">
+            <td>Backbone</td>
+            <td>
+              <div class="stars-outer">
+                <div class="stars-inner">
+                </div>
+              </div>
+              <span class="number-rating"></span>
+            </td>
+          </tr>
+          <tr class="inferno">
+            <td>Inferno</td>
+            <td>
+              <div class="stars-outer">
+                <div class="stars-inner">
+                </div>
+              </div>
+              <span class="number-rating"></span>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+
+  <script type="text/javascript">
+    //initial ratings
+    const ratings = {
+      react: 4.0,
+      vue: 3.5,
+      angular: 4.7,
+      backbone: 2.5,
+      inferno: 3.9
+    }
+    //Total stars
+    const starsTotal = 5;
+
+    // call get rating on load
+    document.addEventListener('DOMContentLoaded', getRatings)
+
+    // form elements
+    const productSelect = document.getElementById('product-select')
+    const ratingControl = document.getElementById('rating-control')
+
+    //init product
+    let product;
+
+    //Poduct select
+    productSelect.addEventListener('change', (e) => {
+      product = e.target.value;
+      // enable rating
+      ratingControl.disabled = false;
+      ratingControl.value = ratings[product]
+    })
+
+    //rating control change
+    ratingControl.addEventListener('blur', (e) => {
+      const rating = e.target.value;
+      //check for value under 5
+      if(rating > 5) {
+        return alert('Please rate 1-5')
+      }
+      //change / update rating
+      ratings[product] = rating;
+      getRatings();
+    })
+
+    //define get ratings function
+    function getRatings() {
+      for (let rating in ratings) {
+        console.log(ratings[rating])
+        //Get percentage of star rating
+        const starPercentage = (ratings[rating]/ starsTotal) * 100;
+        // round to nearest 10
+        const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`
+        console.log(starPercentageRounded)
+        //set width of stars inner to %
+        document.querySelector(`.${rating} .stars-inner`).style.width = starPercentageRounded;
+        //add number ratings
+        document.querySelector(`.${rating} .number-rating`).innerHTML = ratings[rating]
+      }
+    }
+  </script>
+
+</body>
+</html>
