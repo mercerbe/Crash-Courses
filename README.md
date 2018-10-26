@@ -16,3 +16,7 @@ Small Projects and Library/ Component testing
 ### Parallax Page
 - Fixed scrolling images with HTML | CSS
 ![Parallax](./images/parallax.png)
+
+### Google Maps API
+- Google Maps API integration
+![GoogleMaps](./images/GoogleAPI.png)
