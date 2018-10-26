@@ -12,3 +12,7 @@ Small Projects and Library/ Component testing
 ### Full Screen Image Carousel
 - Fluid images on a carousel in HTML | CSS | JS
 ![FullScreenImageCarousel](./images/ImgCarousel.png)
+
+### Parallax Page
+- Fixed scrolling images with HTML | CSS
+![Parallax](./images/parallax.png)
