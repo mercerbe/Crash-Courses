@@ -8,3 +8,7 @@ Small Projects and Library/ Component testing
 ### Drag & Drop JS
 - Drag and Drop feature using vanilla JS
 ![Drag and Drop](./images/DragnDrop.png)
+
+### Full Screen Image Carousel
+- Fluid images on a carousel in HTML | CSS | JS
+![FullScreenImageCarousel](./images/ImgCarousel.png)
