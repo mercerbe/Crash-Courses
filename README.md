@@ -19,4 +19,5 @@ Small Projects and Library/ Component testing
 
 ### Google Maps API
 - Google Maps API integration
-![GoogleMaps](./images/GoogleAPI.png)
+- todo: work custom themes, symbols, shapes. Display extra data
+![GoogleMaps](./images/googlemapsapi.png)

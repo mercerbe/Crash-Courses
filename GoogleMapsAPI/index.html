@@ -7,11 +7,17 @@
   <title>Google Maps API Test</title>
   <style media="screen">
   body{
-    background-color: #fff;
+    background: #000428;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(left, #004e92, #000428);
+    background: -o-linear-gradient(left, #004e92, #000428);
+    background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: #1f192f;
     text-align: center;
     font-family: sans-serif;
-  }
+    }
+    h1 {
+      color: #fff;
+    }
     #map {
       height: 400px;
       width: 100%;
@@ -25,17 +31,60 @@
 
 <!-- custom JS -->
 <script type="text/javascript">
+
+  // initialize map on Charlotte
   //Charlotte lat: 35.2271, lng: -80.8431
-  let map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 35.2271, lng: -80.8431},
-    zoom: 8
-  });
-}
+  function initMap() {
+    //create map
+    let map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 35.2271, lng: -80.8431},
+      zoom: 7
+    });
+    //create new marker
+    let marker = new google.maps.Marker({
+      position: {lat: 35.1, lng: -80.5},
+      map: map
+    });
+    // get icons from google
+    let iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+    const icons = {
+      parking: {
+        icon: `${iconBase}parking_lot_maps.png`
+      }
+    }
+    //custom marker
+    let customMarker = new google.maps.Marker({
+      position: {lat: 35.5, lng: -80.7},
+      icon: icons.parking.icon,
+      map: map
+    })
+    //info window
+    let infoWindow = new google.maps.InfoWindow({
+      content: '<h2>Info Window to display content about the marker!</h2>'
+    })
+    marker.addListener('click', function() {
+      infoWindow.open(map, marker);
+    })
+
+    //================ function to add additional markers =============//
+
+    addMarker({
+      coords:{lat:35.5, lng: -81.9},
+      iconImage: icons.parking.icon
+    });
+
+    function addMarker(props) {
+      let marker = new google.maps.Marker({
+        position: props.coords,
+        map: map,
+        icon: props.iconImage
+      });
+    }
+
+  }
+
 </script>
 <!-- Maps script -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArronquVEx5TS1nM1hvdIeqzRnyoTsCP0&callback=initMap"
-    async defer></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArronquVEx5TS1nM1hvdIeqzRnyoTsCP0&callback=initMap"></script>
 </body>
 </html>
