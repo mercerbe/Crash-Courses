@@ -30,3 +30,8 @@ Small Projects and Library/ Component testing
 ### Custom CSS Spinner
 - built using keyframes in CSS
 ![CSS Spinner](./images/Spinner.png)
+
+### Split Screen Page
+- HTML | CSS | JS
+- JS DOM mouse moves reveal 2 layers, images made with GIMP
+![splitScreen](./images/splitScreen.png)
