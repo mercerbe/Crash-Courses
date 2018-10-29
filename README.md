@@ -26,3 +26,7 @@ Small Projects and Library/ Component testing
 - styled countdown timer in HTML | CSS | JS
 - resposive w/ media queries
 ![Coming Soon](./images/ComingSoon.png)
+
+### Custom CSS Spinner
+- built using keyframes in CSS
+![CSS Spinner](./images/Spinner.png)
