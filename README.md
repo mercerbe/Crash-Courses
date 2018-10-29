@@ -21,3 +21,8 @@ Small Projects and Library/ Component testing
 - Google Maps API integration
 - todo: work custom themes, symbols, shapes. Display extra data
 ![GoogleMaps](./images/googlemapsapi.png)
+
+### Coming Soon Landing Page
+- styled countdown timer in HTML | CSS | JS
+- resposive w/ media queries
+![Coming Soon](./images/ComingSoon.png)
