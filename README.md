@@ -41,3 +41,22 @@ Small Projects and Library/ Component testing
 - transition toggle on svg reveals sidebar
 - mobile responsive
 ![Custom Sidebar](./images/Sidebar.png)
+
+### Gulp Tasks
+- JS | Gulp
+- basic tasks including image compression, minification of JS, Sass compilier
+- example: minify js to dist/js folder using the gulp-uglify plugin
+```js
+gulp.task("minify", function() {
+  gulp
+    .src("src/js/*.js")
+    .pipe(uglify())
+    .pipe(gulp.dest("dist/js"));
+});
+```
+- all tasks can be run under a single 'default' task with one command, e.g:
+```js
+gulp.task('default', ['message, copyHTML, imagemin, minify, sass'])
+```
+
+### Gulp and Sass
