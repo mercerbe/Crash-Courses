@@ -60,3 +60,9 @@ gulp.task('default', ['message, copyHTML, imagemin, minify, sass'])
 ```
 
 ### Gulp and Sass
+
+### Social Media Accordion
+- HTML | CSS | JS
+- Responsive queries for tablets and phones
+- hover transitions to reveal content in accordion
+![Social Media Accordion](./images/SocialAccordion.png)
